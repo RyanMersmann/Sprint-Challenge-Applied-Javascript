@@ -23,29 +23,22 @@
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then(response => {
         console.log(response); // console logs the data returned from the axios get request ["javascript(4)", "bootstrap(3)", "technology(3)", "jquery(3)", "nodejs(2)"]
-    // forEach for every article - need to learn how to make smaller
-        Object.values(response.data.articles).forEach(articleTopic => {
-            articleTopic.forEach(article => {
-                let cards = document.querySelector(".cards-container");
-                cards.append(createCard(article));
-            })
+    // forEach for every article - 
+       response.data.articles.bootstrap.forEach(item =>{
+            document.querySelector('.cards-container').appendChild(createCard(item));
+       })
+       response.data.articles.javascript.forEach(item =>{
+            document.querySelector('.cards-container').appendChild(createCard(item));
         })
-
-    //    response.data.articles.bootstrap.forEach(item =>{
-    //         document.querySelector('.cards-container').appendChild(createCard(item));
-    //    })
-    //    response.data.articles.javascript.forEach(item =>{
-    //         document.querySelector('.cards-container').appendChild(createCard(item));
-    //     })
-    //     response.data.articles.jquery.forEach(item =>{
-    //         document.querySelector('.cards-container').appendChild(createCard(item));
-    //     })
-    //     response.data.articles.node.forEach(item =>{
-    //         document.querySelector('.cards-container').appendChild(createCard(item));
-    //     })
-    //     response.data.articles.technology.forEach(item =>{
-    //         document.querySelector('.cards-container').appendChild(createCard(item));
-    //     })
+        response.data.articles.jquery.forEach(item =>{
+            document.querySelector('.cards-container').appendChild(createCard(item));
+        })
+        response.data.articles.node.forEach(item =>{
+            document.querySelector('.cards-container').appendChild(createCard(item));
+        })
+        response.data.articles.technology.forEach(item =>{
+            document.querySelector('.cards-container').appendChild(createCard(item));
+        })
     })
 
 // <div class="card">
@@ -59,7 +52,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
 // </div>
 
 //Function that returns the div above
-function createCard (obj) {
+function createCard (item) {
     //create Elements on the page
     const card = document.createElement('div');
     const headline = document.createElement('div');
@@ -84,10 +77,10 @@ function createCard (obj) {
     imgContainer.appendChild(img);
 
     //adds text content
-    headline.textContent = obj.headline;
-    author.textContent = obj.authorName;
-    img.src = obj.authorPhoto;
-    name.textContent = obj.authorName;
+    headline.textContent = item.headline;
+    author.textContent = item.authorName;
+    img.src = item.authorPhoto;
+    name.textContent = item.authorName;
 
     return card;
 }
