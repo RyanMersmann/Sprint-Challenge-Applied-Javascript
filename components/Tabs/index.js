@@ -23,7 +23,6 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
             topic.appendChild(newTab);
         })
     })
-    //no catch
 
     //function that creates the tab topics
     function tabComponent (item){
