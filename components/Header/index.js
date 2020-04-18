@@ -30,7 +30,7 @@ function Header() {
     temp.classList.add('temp');
 
     //adds text content
-    date.textContent = 'SMARCH 28, 2019';
+    date.textContent = 'APRIL 18, 2020';
     title.textContent = "Lambda Times";
     temp.textContent = '98°';
 
@@ -41,5 +41,5 @@ function Header() {
 
     // return the function
     return header;
-
+    
 }
